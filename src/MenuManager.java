@@ -29,6 +29,9 @@ public class MenuManager {
 			else if( num == 4) {
 				bookManager.viewBook();
 			}
+			else {
+				continue;
+			}
 		}
 	}
 	

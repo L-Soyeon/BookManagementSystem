@@ -22,6 +22,6 @@ public class Book {
 	}
 	
 	public void printInfo() {
-		System.out.println("name: " + name + "id: " + id + "info1: " + info1 + "info2: " + info2 );
+		System.out.println("name: " + name + " id: " + id + " info1: " + info1 + " info2: " + info2 );
 	}
 }	
