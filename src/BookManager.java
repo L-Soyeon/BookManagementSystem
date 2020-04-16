@@ -1,86 +1,103 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import book.Book;
+import book.FictionBook;
+
 public class BookManager {
-	ArrayList<Book> books =  new ArrayList<Book>();
+	ArrayList<Book> books =  new ArrayList<Book>();	//books라는 ArrayList 생성
 	
-	Scanner input;
-	
+	Scanner input; ////
 	BookManager(Scanner input){
 		this.input = input;
 	}
 	
-	public void addBook() {
-		Book book = new Book();
-		System.out.print("Book ID : ");
-		book.id = input.nextInt();
-		System.out.print("Book name : ");
-		book.name = input.next();
-		System.out.println(book.name); 
-		System.out.print("Book Info1 : ");
-		book.info1 = input.next();
-		System.out.println(book.info1);
-		System.out.print("Book Info2 : ");
-		book.info2 = input.next();
-		System.out.println(book.info2);
-		books.add(book);
+	public void addBook() {		//book의 정보를 추가
+		int genre = 0;
+		Book book;
+		while(genre != 1 && genre != 2) {
+			System.out.println("1 for Fiction");
+			System.out.println("2 for Nonfiction");
+			System.out.println("Select num for Book Genre between 1 and 2 : ");
+			genre = input.nextInt();
+			if(genre == 1) {
+				book = new FictionBook();	//객체 생성
+				book.getBookInput(input);
+				books.add(book);
+				break;
+			}
+			else if(genre ==2) {
+				book = new Book();
+				book.getBookInput(input);
+				books.add(book);
+				break;
+			}
+			else {
+				System.out.print("Select num for Book Genre between 1 and 2 : ");
+			}
+		}
+		
 	}
 	
-	public void deleteBook() {
+	public void deleteBook() {		//book의 정보를 삭제
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
 		int index = -1;
-		for (int i = 0; i < books.size(); i++) {
-			if (books.get(i).id == bookId) {
+		for (int i = 0; i < books.size(); i++) {	//index 값을 초기화
+			if (books.get(i).getId() == bookId) {
 				index = i;
-				break;
+				break;		//for문을 빠져나감
 			}
 		}
 		if(index >= 0) {
-			books.remove(index);
+			books.remove(index);	//books의 index번째를 삭제
 			System.out.println("the book " + bookId + " is deleted");
 	
 		}
-		else {
+		else {	//다른 경우라면 등록되지 않았다는 메시지를 출력
 			System.out.println("the book has not been registered");
 			return;
 		}
 		
 	}
 	
-	public void editBook() {
+	public void editBook() {	//book의 정보를 수정
 		System.out.print("Book ID : ");
 		int bookId = input.nextInt();
 		for (int i = 0; i < books.size(); i++) {
-			Book book  = books.get(i);
-			if (book.id == bookId) {
+			Book book  = books.get(i);	//객체 생성
+			if (book.getId() == bookId) {
 				int num = -1;
 
 				while(num != 5) {
 					System.out.println("** Student Info Edit Menu **");
 					System.out.println("1. Edit Id");
 					System.out.println("2. Edit Name");
-					System.out.println("3. Edit Info1");
-					System.out.println("4. Edit Info2");
+					System.out.println("3. Edit Code");
+					System.out.println("4. Edit Info");
 					System.out.println("5. Exit"); 
 					System.out.println("Select one number between 1 - 5 : ");
 					System.out.println("_______________________________________");
 					num = input.nextInt();
 					if( num == 1) {
 						System.out.print("Book ID : ");
-						book.id = input.nextInt();
+						int id = input.nextInt();
+						book.setId(id);
 					}
 					else if( num == 2) {
 						System.out.print("Book name : ");
-						book.name = input.next();
+						String name = input.next();
+						book.setName(name);
 					}
 					else if( num == 3) {
-						System.out.print("Book Info1 : ");
-						book.info1 = input.next();
+						System.out.print("Book Code : ");
+						String code = input.next();
+						book.setCode(code);
 					}
 					else if( num == 4) {
-						System.out.print("Book Info2 : ");
-						book.info2 = input.next();
+						System.out.print("Book Info : ");
+						String info = input.next();
+						book.setInfo(info);
 					}
 					else {
 						continue;
@@ -91,9 +108,10 @@ public class BookManager {
 		}
 	}
 
-	public void viewBooks() {
+	public void viewBooks() {	//ID를 입력 받을 시 book의 정보를 보여줌
 //		System.out.print("Book ID : ");
 //		int bookId = input.nextInt();
+		System.out.println("# of registered books: " + books.size()); 
 		for (int i = 0; i < books.size(); i++) {
 			books.get(i).printInfo();
 		}
