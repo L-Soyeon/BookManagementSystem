@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import book.Book;
+import book.BookGenre;
 import book.FictionBook;
+import book.Other_GenreBook;
 
 public class BookManager {
 	ArrayList<Book> books =  new ArrayList<Book>();	//books扼绰 ArrayList 积己
@@ -18,22 +20,30 @@ public class BookManager {
 		while(genre != 1 && genre != 2) {
 			System.out.println("1 for Fiction");
 			System.out.println("2 for Nonfiction");
-			System.out.println("Select num for Book Genre between 1 and 2 : ");
+			System.out.println("3 for Other_Genre");
+			System.out.println("Select num 1,2 or 3 for Book Genre : ");
 			genre = input.nextInt();
 			if(genre == 1) {
-				book = new FictionBook();	//按眉 积己
+				book = new FictionBook(BookGenre.Fiction);	//按眉 积己
 				book.getBookInput(input);
 				books.add(book);
 				break;
 			}
-			else if(genre ==2) {
-				book = new Book();
+			else if(genre == 2) {
+				book = new Book(BookGenre.Nonfiction);
 				book.getBookInput(input);
 				books.add(book);
 				break;
 			}
+			else if(genre == 3) {
+				book = new Other_GenreBook(BookGenre.Other_Genre);
+				book.getBookInput(input);
+				books.add(book);
+				break;
+			}
+		
 			else {
-				System.out.print("Select num for Book Genre between 1 and 2 : ");
+				System.out.print("Select num 1,2 or 3 for Book Genre : ");
 			}
 		}
 		

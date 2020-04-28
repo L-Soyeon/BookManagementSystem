@@ -7,20 +7,42 @@ public class Book {
 	protected String name;
 	protected int id;
 	protected String code;
-	protected String info; //상속
+	protected String info;
+//	protected String section;	//상속
 	
-	public Book() {		// 구조체 생성
+	public Book() {		// 생성자 생성
 		
 	}
 	
-	public Book(String name, int id, String code, String info) {	//name, id, info1, info2를 매개 변수로 받는 구조체 생성
+	public Book(BookGenre genre) {		// 생성자 생성
+		this.genre = genre;
+	}
+	
+	public Book(String name, int id, String code, String info) {	//name, id, info1, info2를 매개 변수로 받는 생성자 생성
 		this.name = name;
 		this.id = id;
 		this.code = code;
 		this.info = info;
 	}
 	
-	public Book(String name, int id) {	//name, id를 매개 변수로 받는 구조체 생성
+	public Book(BookGenre genre, String name, int id, String code, String info) {	//name, id, info1, info2를 매개 변수로 받는 생성자 생성
+		this.genre = genre;
+		this.name = name;
+		this.id = id;
+		this.code = code;
+		this.info = info;
+	}
+	
+//	public Book(BookGenre genre, String name, int id, String code, String info, String section) {	//name, id, info1, info2를 매개 변수로 받는 생성자 생성
+//		this.genre = genre;
+//		this.name = name;
+//		this.id = id;
+//		this.code = code;
+//		this.info = info;
+//		this.section = section;
+//	}
+	
+	public Book(String name, int id) {	//name, id를 매개 변수로 받는 생성자 생성
 		this.name = name;
 		this.id = id;
 	}
@@ -64,10 +86,31 @@ public class Book {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
+//	public String getSection() {
+//		return section;
+//	}
+//
+//	public void setSection(String section) {
+//		this.section = section;
+//	}
 
 	
 	public void printInfo() {	//book의 정보를 보여줌
-		System.out.println("name: " + name + " id: " + id + " code: " + code + " info: " + info );
+		String bgenre = "none";
+		switch(this.genre) {
+		case Fiction:
+			bgenre = "Fic.";
+			break;
+		case Nonfiction:
+			bgenre = "Nonfic.";
+			break;
+		case Other_Genre:
+			bgenre = "Other.";
+			break;
+		default:		
+		}
+		System.out.println("genre: " + bgenre + " name: " + name + " id: " + id + " code: " + code + " info: " + info );
 	}
 	
 	public void getBookInput(Scanner input) {

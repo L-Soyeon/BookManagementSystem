@@ -3,6 +3,11 @@ package book;
 import java.util.Scanner;
 
 public class FictionBook extends Book {
+	
+	public FictionBook(BookGenre genre) {		// 구조체 생성
+		super(genre);
+	}
+	
 	public void getBookInput(Scanner input) {
 		System.out.print("Book ID : ");
 		int id = input.nextInt();
