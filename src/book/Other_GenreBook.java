@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Other_GenreBook extends Book {
+public class Other_GenreBook extends HCodeBook {
 	
 	protected String section;
 	
@@ -11,34 +11,15 @@ public class Other_GenreBook extends Book {
 	}
 	
 	public void getBookInput(Scanner input) {
-		System.out.print("Book ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Book name : ");
-		String name = input.next();
-		this.setName(name);
-		
+		setBookID(input);
+		setBookName(input); 
+		setBookCodewithYN(input);
+		setBookSectionwithYN(input);
+		setBookInfo(input);
+	}
+	
+	public void setBookSectionwithYN(Scanner input) {
 		char answer = 'x';
-		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
-		{
-			System.out.print("This book have a code? (Y/N)");
-			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y') {
-				System.out.println("Code : ");
-				String code =input.next();
-				this.setCode(code);
-				break;
-			}
-			else if(answer == 'n' || answer == 'N') {
-				this.setCode("");
-				break;
-			}
-			else {	
-			}
-		}
-		
-		answer = 'x';
 		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
 		{
 			System.out.print("This book have a section? (Y/N)");
@@ -56,27 +37,10 @@ public class Other_GenreBook extends Book {
 			else {	
 			}
 		}
-		
-		System.out.print("Book Info : ");
-		String info = input.next();
-		this.setInfo(info);
 	}
-	
+		
 	public void printInfo() {	//book의 정보를 보여줌
-		String bgenre = "none";
-		switch(this.genre) {
-		case Fiction:
-			bgenre = "Fic.";
-			break;
-		case Nonfiction:
-			bgenre = "Nonfic.";
-			break;
-		case Other_Genre:
-			bgenre = "Other.";
-			break;
-		default:		
-		}
+		String bgenre = getGenreString();
 		System.out.println("genre : " + bgenre + " name: " + name + " id: " + id + " code: " + code + " info: " + info + " section: " + section );
 	}
-
 }

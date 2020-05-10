@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class Book {
+public abstract class Book implements BookInput { //Book이라는 객체를 생성하지 않음
 	protected BookGenre genre = BookGenre.Fiction;
 	protected String name;
 	protected int id;
@@ -94,9 +94,34 @@ public class Book {
 //	public void setSection(String section) {
 //		this.section = section;
 //	}
-
 	
-	public void printInfo() {	//book의 정보를 보여줌
+	public abstract void printInfo();	//book의 정보를 보여줌
+	
+	public void setBookID(Scanner input) {
+		System.out.print("Book ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	
+	public void setBookName(Scanner input) {
+		System.out.print("Book name : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setBookCode(Scanner input) {
+		System.out.print("Book Code : ");
+		String code = input.next();
+		this.setCode(code);
+	}
+	
+	public void setBookInfo(Scanner input) {
+		System.out.print("Book Info : ");
+		String info = input.next();
+		this.setInfo(info);
+	}
+	
+	public String getGenreString() {
 		String bgenre = "none";
 		switch(this.genre) {
 		case Fiction:
@@ -110,24 +135,6 @@ public class Book {
 			break;
 		default:		
 		}
-		System.out.println("genre: " + bgenre + " name: " + name + " id: " + id + " code: " + code + " info: " + info );
-	}
-	
-	public void getBookInput(Scanner input) {
-		System.out.print("Book ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Book name : ");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Book Code : ");
-		String code = input.next();
-		this.setCode(code);
-		
-		System.out.print("Book Info : ");
-		String info = input.next();
-		this.setInfo(info);
+		return bgenre;
 	}
 }	
