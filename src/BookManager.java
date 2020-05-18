@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import book.Book;
@@ -19,33 +20,44 @@ public class BookManager {
 	public void addBook() {		//book의 정보를 추가
 		int genre = 0;
 		BookInput bookInput;
-		while(genre != 1 && genre != 2 && genre != 3) {
-			System.out.println("1 for Fiction");
-			System.out.println("2 for Nonfiction");
-			System.out.println("3 for Other_Genre");
-			System.out.println("Select num 1,2 or 3 for Book Genre : ");
-			System.out.println("_______________________________________");
-			genre = input.nextInt();
-			if(genre == 1) {
-				bookInput = new FictionBook(BookGenre.Fiction);	//객체 생성
-				bookInput.getBookInput(input);
-				books.add(bookInput);
-				break;
+		while(genre != 1 && genre != 2 && genre != 3) {	//
+			try {
+				System.out.println("1 for Fiction");
+				System.out.println("2 for Nonfiction");
+				System.out.println("3 for Other_Genre");
+				System.out.println("Select num 1,2 or 3 for Book Genre : ");
+				System.out.println("_______________________________________");
+				genre = input.nextInt();
+				if(genre == 1) {
+					bookInput = new FictionBook(BookGenre.Fiction);	//객체 생성
+					bookInput.getBookInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else if(genre == 2) {
+					bookInput = new NonfictionBook(BookGenre.Nonfiction);
+					bookInput.getBookInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else if(genre == 3) {
+					bookInput = new Other_GenreBook(BookGenre.Other_Genre);
+					bookInput.getBookInput(input);
+					books.add(bookInput);
+					break;
+				}
+				else {
+					System.out.print("Select num 1,2 or 3 for Book Genre : ");
+					System.out.println("_______________________________________");
+				}
 			}
-			else if(genre == 2) {
-				bookInput = new NonfictionBook(BookGenre.Nonfiction);
-				bookInput.getBookInput(input);
-				books.add(bookInput);
-				break;
-			}
-			else if(genre == 3) {
-				bookInput = new Other_GenreBook(BookGenre.Other_Genre);
-				bookInput.getBookInput(input);
-				books.add(bookInput);
-				break;
-			}
-			else {
-				System.out.print("Select num 1,2 or 3 for Book Genre : ");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 3!");
+				System.out.println("_______________________________________");
+				if(input.hasNext()) {	//
+					input.next();
+				}
+				genre = -1; 
 			}
 		}
 	}
@@ -72,10 +84,12 @@ public class BookManager {
 		if(index >= 0) {
 			books.remove(index);	//books의 index번째를 삭제
 			System.out.println("the book " + bookId + " is deleted");
+			System.out.println("_______________________________________");
 			return 1;
 		}
 		else {	//다른 경우라면 등록되지 않았다는 메시지를 출력
 			System.out.println("the book has not been registered");
+			System.out.println("_______________________________________");
 			return -1;
 		}
 	}
@@ -116,9 +130,11 @@ public class BookManager {
 
 	public void viewBooks() {	//ID를 입력 받을 시 book의 정보를 보여줌
 		System.out.println("# of registered books: " + books.size()); 
+		System.out.println("_______________________________________");
 		for (int i = 0; i < books.size(); i++) {
 			books.get(i).printInfo();
 		}
+		System.out.println("_______________________________________");
 	}
 	
 	public void showEditMenu() {

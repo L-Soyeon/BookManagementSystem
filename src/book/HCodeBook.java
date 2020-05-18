@@ -2,6 +2,8 @@ package book;
 
 import java.util.Scanner;
 
+import exception.CodeFormatException;
+
 public abstract class HCodeBook extends Book {
 	
 	public HCodeBook(BookGenre genre) {		// »ý¼ºÀÚ
@@ -23,15 +25,20 @@ public abstract class HCodeBook extends Book {
 		{
 			System.out.print("This book have a code? (Y/N)");
 			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y') {
-				setBookCode(input);
-				break;
+			try {
+				if(answer == 'y' || answer == 'Y') {
+					setBookCode(input);
+					break;
+				}
+				else if(answer == 'n' || answer == 'N') {
+					this.setCode("");
+					break;
+				}
+				else {	
+				}
 			}
-			else if(answer == 'n' || answer == 'N') {
-				this.setCode("");
-				break;
-			}
-			else {	
+			catch(CodeFormatException e) {
+				System.out.println("Incorrect Code Format. put the correct format book code");
 			}
 		}	
 	}

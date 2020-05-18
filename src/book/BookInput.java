@@ -2,6 +2,8 @@ package book;
 
 import java.util.Scanner;
 
+import exception.CodeFormatException;
+
 public interface BookInput {
 	
 	public int getId();
@@ -10,7 +12,7 @@ public interface BookInput {
 	
 	public void setName(String name);
 	
-	public void setCode(String code);
+	public void setCode(String code) throws CodeFormatException;
 	
 	public void setInfo(String info);
 	

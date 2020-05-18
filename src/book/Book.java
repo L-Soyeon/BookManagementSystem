@@ -2,6 +2,8 @@ package book;
 
 import java.util.Scanner;
 
+import exception.CodeFormatException;
+
 public abstract class Book implements BookInput { //Book이라는 객체를 생성하지 않음
 	protected BookGenre genre = BookGenre.Fiction;
 	protected String name;
@@ -75,7 +77,11 @@ public abstract class Book implements BookInput { //Book이라는 객체를 생성하지 �
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(String code) throws CodeFormatException {
+		if(!(code.length() == 3) && !code.equals("")) {
+			throw new CodeFormatException();
+		}
+		
 		this.code = code;
 	}
 
@@ -110,9 +116,18 @@ public abstract class Book implements BookInput { //Book이라는 객체를 생성하지 �
 	}
 	
 	public void setBookCode(Scanner input) {
-		System.out.print("Book Code : ");
-		String code = input.next();
-		this.setCode(code);
+		String code = "";
+		while(!(code.length() == 3)) {
+			System.out.print("Book Code(3) : ");
+			code = input.next();
+			try {
+				this.setCode(code);
+			} catch (CodeFormatException e) {
+				System.out.println("Incorrect Code Format. put the correct format book code");
+				System.out.println("_______________________________________");
+//				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void setBookInfo(Scanner input) {
