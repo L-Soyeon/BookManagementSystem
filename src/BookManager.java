@@ -1,21 +1,30 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import book.Book;
 import book.BookGenre;
 import book.BookInput;
 import book.FictionBook;
 import book.NonfictionBook;
 import book.Other_GenreBook;
 
-public class BookManager {
+public class BookManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8867333931238636841L;
+
 	ArrayList<BookInput> books =  new ArrayList<BookInput>();	//books라는 ArrayList 생성
 	
-	Scanner input; ////
+	transient Scanner input; ////
 	BookManager(Scanner input){
 		this.input = input;
 	}
+	
+	public void setScanner(Scanner input) {
+        this.input = input;
+    }
 	
 	public void addBook() {		//book의 정보를 추가
 		int genre = 0;

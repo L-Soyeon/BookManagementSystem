@@ -1,10 +1,16 @@
 package book;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.CodeFormatException;
 
-public abstract class Book implements BookInput { //Book이라는 객체를 생성하지 않음
+public abstract class Book implements BookInput, Serializable { //Book이라는 객체를 생성하지 않음
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3528383042634608545L;
+	
 	protected BookGenre genre = BookGenre.Fiction;
 	protected String name;
 	protected int id;
