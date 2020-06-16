@@ -1,8 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import book.Book;
 import book.BookGenre;
 import book.BookInput;
 import book.FictionBook;
@@ -145,6 +147,15 @@ public class BookManager implements Serializable {
 		}
 		System.out.println("_______________________________________");
 	}
+	
+	public int size() {
+		return books.size();
+	}
+	
+	public BookInput get(int index) {
+		return (Book) books.get(index);
+	}
+	
 	
 	public void showEditMenu() {
 		System.out.println("** Student Info Edit Menu **");

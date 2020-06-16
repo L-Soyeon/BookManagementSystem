@@ -10,9 +10,15 @@ public interface BookInput {
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getCode();
+	
 	public void setCode(String code) throws CodeFormatException;
+	
+	public String getInfo();
 	
 	public void setInfo(String info);
 	
