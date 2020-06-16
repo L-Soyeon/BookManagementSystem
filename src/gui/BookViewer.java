@@ -13,6 +13,7 @@ import manager.BookManager;
 
 public class BookViewer extends JPanel {
 	WindowFrame frame;
+	
 	BookManager bookManager;
 	
 	public BookViewer(WindowFrame frame, BookManager bookManager) {

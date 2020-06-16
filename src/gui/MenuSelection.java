@@ -40,5 +40,6 @@ public class MenuSelection extends JPanel {
 
 		this.add(panel1, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.CENTER);
+		
 	}
 }

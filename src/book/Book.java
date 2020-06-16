@@ -16,6 +16,7 @@ public abstract class Book implements BookInput, Serializable { //Book이라는 객�
 	protected int id;
 	protected String code;
 	protected String info;
+	
 //	protected String section;	//상속
 	
 	public Book() {		// 생성자 생성

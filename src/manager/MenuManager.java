@@ -30,7 +30,8 @@ public class MenuManager {
 		
 		WindowFrame frame = new WindowFrame(bookManager);
 		selectMenu(input, bookManager);
-		putObject(bookManager, "bookManager.ser");	
+		putObject(bookManager, "bookManager.ser");
+		
 	}
 	
 	public static void selectMenu(Scanner input, BookManager bookManager) {

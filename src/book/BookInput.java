@@ -32,5 +32,6 @@ public interface BookInput {
 	
 	public void setBookCode(Scanner input) ;
 	
-	public void setBookInfo(Scanner input) ;	
+	public void setBookInfo(Scanner input) ;
+	
 }
