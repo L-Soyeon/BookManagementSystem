@@ -56,5 +56,4 @@ public class WindowFrame extends JFrame {
 	public void setBookviewer(BookViewer bookviewer) {
 		this.bookviewer = bookviewer;
 	}
-	
 }

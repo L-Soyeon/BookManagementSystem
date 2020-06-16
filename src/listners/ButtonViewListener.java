@@ -20,5 +20,4 @@ public class ButtonViewListener implements ActionListener {
 		BookViewer viewer = frame.getBookviewer();
 		frame.setupPanel(viewer);		
 	}
-	
 }

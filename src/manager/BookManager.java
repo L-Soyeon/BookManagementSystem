@@ -156,7 +156,6 @@ public class BookManager implements Serializable {
 		return (Book) books.get(index);
 	}
 	
-	
 	public void showEditMenu() {
 		System.out.println("** Student Info Edit Menu **");
 		System.out.println("1. Edit Id");
