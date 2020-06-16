@@ -9,7 +9,6 @@ import gui.BookViewer;
 import gui.WindowFrame;
 
 public class ButtonAddListener implements ActionListener {
-	
 	WindowFrame frame;
 
 	public ButtonAddListener(WindowFrame frame) {

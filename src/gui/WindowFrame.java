@@ -11,8 +11,6 @@ public class WindowFrame extends JFrame {
 	MenuSelection menuselection;
 	BookAdder bookadder;
 	BookViewer bookviewer;
-	
-	
 
 	public WindowFrame(BookManager bookManager) {
 		this.bookManager =  bookManager;
@@ -20,11 +18,9 @@ public class WindowFrame extends JFrame {
 		this.bookadder = new BookAdder(this);
 		this.bookviewer= new BookViewer(this, this.bookManager);
 		
-		
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-//		this.add(bookadder);
 		this.setupPanel(menuselection);
 		
 		this.setVisible(true);
@@ -60,5 +56,4 @@ public class WindowFrame extends JFrame {
 	public void setBookviewer(BookViewer bookviewer) {
 		this.bookviewer = bookviewer;
 	}
-
 }
